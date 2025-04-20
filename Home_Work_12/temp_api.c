@@ -18,14 +18,17 @@ void print_statistics(Statistics *data, int size)
 
 
 //  минимальная температура месяца
-void print_month_min_temp(Statistics *data, int size, int year, int month) {
+void print_month_min_temp(Statistics *data, int size, int year, int month) 
+{
     int min_temp = 0;
     int found = 0;
     int min_index = -1;
 
     // Ищем первую запись за указанный месяц и год
-    for (int i = 0; i < size; i++) {
-        if (data[i].dddd == year && data[i].mm == month) {
+    for (int i = 0; i < size; i++) 
+    {
+        if (data[i].dddd == year && data[i].mm == month) 
+	{
             min_temp = data[i].temperature;
             min_index = i;
             found = 1;
@@ -34,13 +37,15 @@ void print_month_min_temp(Statistics *data, int size, int year, int month) {
     }
 
     // Если записи не найдены
-    if (!found) {
+    if (!found) 
+    {
         printf("\nНет данных за указанный %d-%02d\n", year, month);
         return;
     }
 
     // Ищем минимальную температуру
-    for (int i = min_index + 1; i < size; i++) {
+    for (int i = min_index + 1; i < size; i++) 
+    {
         if (data[i].dddd == year && 
             data[i].mm == month && 
             data[i].temperature < min_temp) 
@@ -62,14 +67,17 @@ void print_month_min_temp(Statistics *data, int size, int year, int month) {
 }
 
 //  максимальная температуры месяца
-void print_month_max_temp(Statistics *data, int size, int year, int month) {
+void print_month_max_temp(Statistics *data, int size, int year, int month) 
+{
     int max_temp = 0;
     int found = 0;
     int max_index = -1;
 
     // Поиск первой записи за указанный месяц
-    for (int i = 0; i < size; i++) {
-        if (data[i].dddd == year && data[i].mm == month) {
+    for (int i = 0; i < size; i++) 
+	{
+        if (data[i].dddd == year && data[i].mm == month) 
+	{
             max_temp = data[i].temperature;
             max_index = i;
             found = 1;
@@ -77,13 +85,15 @@ void print_month_max_temp(Statistics *data, int size, int year, int month) {
         }
     }
 
-    if (!found) {
+    if (!found) 
+    {
         printf("\nНет данных за указанный %d-%02d\n", year, month);
         return;
     }
 
     // Поиск максимальной температуры
-    for (int i = max_index + 1; i < size; i++) {
+    for (int i = max_index + 1; i < size; i++) 
+    {
         if (data[i].dddd == year && 
             data[i].mm == month && 
             data[i].temperature > max_temp) 
@@ -102,23 +112,27 @@ void print_month_max_temp(Statistics *data, int size, int year, int month) {
            data[max_index].dd,
            data[max_index].hh,
            data[max_index].mi);
-}
+   }
 
 // для годовой статистики
-void print_year_avg_temp(Statistics *data, int size, int year) {
+void print_year_avg_temp(Statistics *data, int size, int year) 
+{
     int sum = 0;
     int count = 0;
     
     // Суммируем температуры за указанный год
-    for (int i = 0; i < size; i++) {
-        if (data[i].dddd == year) {
+    for (int i = 0; i < size; i++) 
+    {
+        if (data[i].dddd == year) 
+        {
             sum += data[i].temperature;
             count++;
         }
     }
     
     // Обработка отсутствия данных
-    if (count == 0) {
+    if (count == 0) 
+    {
         printf("\nNo temperature data available for year %d\n", year);
         return;
     }
@@ -130,14 +144,17 @@ void print_year_avg_temp(Statistics *data, int size, int year) {
 }
 
 // минимальноей температуры за год  статистики
-void print_year_min_temp(Statistics *data, int size, int year) {
+void print_year_min_temp(Statistics *data, int size, int year) 
+    {
     int min_temp = 0;
     int found = 0;
     int min_index = -1;
 
     // Ищем первую запись за указанный год
-    for (int i = 0; i < size; i++) {
-        if (data[i].dddd == year) {
+    for (int i = 0; i < size; i++) 
+	{
+        if (data[i].dddd == year) 
+	{
             min_temp = data[i].temperature;
             min_index = i;
             found = 1;
@@ -145,13 +162,15 @@ void print_year_min_temp(Statistics *data, int size, int year) {
         }
     }
 
-    if (!found) {
+    if (!found) 
+    {
         printf("\nНет данных за указанный год %d\n", year);
         return;
     }
 
     // Ищем абсолютный минимум за год
-    for (int i = min_index + 1; i < size; i++) {
+    for (int i = min_index + 1; i < size; i++) 
+	{
         if (data[i].dddd == year && 
             data[i].temperature < min_temp) 
         {
@@ -172,14 +191,17 @@ void print_year_min_temp(Statistics *data, int size, int year) {
 }
 
 // Максимальной  статистики за год
-void print_year_max_temp(Statistics *data, int size, int year) {
+void print_year_max_temp(Statistics *data, int size, int year) 
+{
     int max_temp = 0;
     int found = 0;
     int max_index = -1;
 
     // Ищем первую запись за указанный год
-    for (int i = 0; i < size; i++) {
-        if (data[i].dddd == year) {
+    for (int i = 0; i < size; i++) 
+     {
+        if (data[i].dddd == year) 
+	{
             max_temp = data[i].temperature;
             max_index = i;
             found = 1;
@@ -187,13 +209,15 @@ void print_year_max_temp(Statistics *data, int size, int year) {
         }
     }
 
-    if (!found) {
+    if (!found) 
+    {
         printf("\nНет данных за указанный год%d\n", year);
         return;
     }
 
     // Ищем абсолютный максимум за год
-    for (int i = max_index + 1; i < size; i++) {
+    for (int i = max_index + 1; i < size; i++) 
+    {
         if (data[i].dddd == year && 
             data[i].temperature > max_temp) 
         {
@@ -231,7 +255,8 @@ Statistics* add_stat_record(Statistics* arr, int* size, Statistics new_record)
     return new_arr; // Возвращаем новый указатель на массив
 }
 
-Statistics* remove_stat_record(Statistics* arr, int* size, int index) {
+Statistics* remove_stat_record(Statistics* arr, int* size, int index) 
+    {
     // Проверка корректности индекса
     if (index < 0 || index >= *size) {
         fprintf(stderr, "Ошибка: Некорректный индекс для удаления!\n");
@@ -256,7 +281,8 @@ Statistics* remove_stat_record(Statistics* arr, int* size, int index) {
 
 //Описания сортировки
 // Вспомогательная функция для сравнения дат и времени
-static int compare_dates(const Statistics *a, const Statistics *b) {
+static int compare_dates(const Statistics *a, const Statistics *b) 
+{
     if (a->dddd != b->dddd) return a->dddd - b->dddd;    // Год
     if (a->mm != b->mm) return a->mm - b->mm;            // Месяц
     if (a->dd != b->dd) return a->dd - b->dd;            // День
@@ -265,10 +291,14 @@ static int compare_dates(const Statistics *a, const Statistics *b) {
 }
 
 // Сортировка по дате/времени (от старых к новым)
-void bubble_sort_by_date(Statistics *arr, int size) {
-    for (int i = 0; i < size - 1; i++) {
-        for (int j = 0; j < size - i - 1; j++) {
-            if (compare_dates(&arr[j], &arr[j+1]) > 0) {
+void bubble_sort_by_date(Statistics *arr, int size) 
+{
+    for (int i = 0; i < size - 1; i++) 
+	{
+        for (int j = 0; j < size - i - 1; j++) 
+	{
+            if (compare_dates(&arr[j], &arr[j+1]) > 0) 
+	{
                 // Обмен местами
                 Statistics temp = arr[j];
                 arr[j] = arr[j+1];
@@ -279,10 +309,13 @@ void bubble_sort_by_date(Statistics *arr, int size) {
 }
 
 // Сортировка по температуре (от меньшей к большей)
-void bubble_sort_by_temp(Statistics *arr, int size) {
+void bubble_sort_by_temp(Statistics *arr, int size) 
+{
     for (int i = 0; i < size - 1; i++) {
-        for (int j = 0; j < size - i - 1; j++) {
-            if (arr[j].temperature > arr[j+1].temperature) {
+        for (int j = 0; j < size - i - 1; j++)
+ {
+            if (arr[j].temperature > arr[j+1].temperature) 
+{
                 // Обмен местами
                 Statistics temp = arr[j];
                 arr[j] = arr[j+1];
@@ -309,7 +342,8 @@ int save_to_csv(const char* filename, Statistics* data, int size) {
     fprintf(file, "Year,Month,Day,Hour,Minute,Temperature\n");
 
     // Запись данных
-    for (int i = 0; i < size; i++) {
+    for (int i = 0; i < size; i++) 
+	{
         fprintf(file, "%04d,%02d,%02d,%02d,%02d,%d\n",
                 data[i].dddd,
                 data[i].mm,
@@ -324,7 +358,8 @@ int save_to_csv(const char* filename, Statistics* data, int size) {
 }
 
 //Реализация загрузки в масив структур из файла 
-int parse_csv(const char* filename, Statistics** arr, int* size) {
+int parse_csv(const char* filename, Statistics** arr, int* size)
+ {
     FILE* file = fopen(filename, "r");
     if (!file) {
         perror("Ошибка открытия файла");
@@ -336,11 +371,13 @@ int parse_csv(const char* filename, Statistics** arr, int* size) {
     *size = 0;
 
     // Пропускаем заголовок (первую строку)
-    if (fgets(line, sizeof(line), file)) { // Исправлено: добавлена закрывающая скобка
+    if (fgets(line, sizeof(line), file)) 
+	{ 
         line_num++;
     }
 
-    while (fgets(line, sizeof(line), file)) { // Исправлено: добавлена закрывающая скобка
+    while (fgets(line, sizeof(line), file)) 
+{ 
         line_num++;
         int year, month, day, hour, minute, temp;
         
@@ -380,7 +417,8 @@ int parse_csv(const char* filename, Statistics** arr, int* size) {
 }
 
 //Реализация вывода статистики за указанный месяц
-void print_month_stats(Statistics *data, int size, int year, int month) {
+void print_month_stats(Statistics *data, int size, int year, int month) 
+{
     int sum = 0, count = 0;
     int min_temp = 100, max_temp = -100;
 

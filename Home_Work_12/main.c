@@ -23,8 +23,8 @@ int main(int argc, char *argv[])
 {
 
    
-    int opt; // <-- Объявление переменной opt
-    char *filename = NULL; // <-- Объявление filename
+    int opt; // Объявление переменной opt
+    char *filename = NULL; //  Объявление filename
     int year_filter = 0;    // Инициализация года (0 = все года)
     int month_filter = 0;   // Инициализация месяца (0 = все месяцы)
     int size = 0;
@@ -40,7 +40,8 @@ int main(int argc, char *argv[])
 				};
 
 // Описания выбора аргументов
-   while ((opt = getopt(argc, argv, "hf:m:y:")) != -1) {
+   while ((opt = getopt(argc, argv, "hf:m:y:")) != -1) 
+   {
         switch (opt) {
             case 'h':
                 printf(HELP_MSG, argv[0], argv[0]);
@@ -73,14 +74,16 @@ int main(int argc, char *argv[])
             fprintf(stderr, "Ошибка загрузки файла\n");
             return 1;
         }
-    } else {
+    } else 
+    {
         fprintf(stderr, "Укажите файл через -f <filename> или введите -h для справки\n");
         return 1;
     }
 
 
 // Вывод статистики
-    if (month_filter != 0) {
+    if (month_filter != 0) 
+    {
         printf("\nСтатистика за %d месяц %d года:\n", month_filter, year_filter);
         print_month_stats(data, size, year_filter, month_filter);
     } else {
@@ -89,7 +92,8 @@ int main(int argc, char *argv[])
 
 
 	// Переносим записи в динамический массив
-    for (size_t i = 0; i < sizeof(temp_data)/sizeof(temp_data[0]); i++) {
+    for (size_t i = 0; i < sizeof(temp_data)/sizeof(temp_data[0]); i++) 
+   {
         Statistics* tmp = add_stat_record(data, &size, temp_data[i]);
         if (!tmp) {
             fprintf(stderr, "Memory allocation error!\n");
@@ -101,8 +105,10 @@ int main(int argc, char *argv[])
 
 
 // Обработка аргументов командной строки
-    for (int i = 1; i < argc; i++) {
-        if (strcmp(argv[i], "-h") == 0) {
+    for (int i = 1; i < argc; i++) 
+    {
+        if (strcmp(argv[i], "-h") == 0) 
+    {
             printf(HELP_MSG, argv[0], argv[0]);
             return 0; // Выход после вывода справки
         }
@@ -158,7 +164,8 @@ printf("\nТестовый вывод данных:\n");
     print_year_max_temp(data, size, 2024);	// Максимальная годоваая температура 
 */
     // Сохранение в файл
-    if (save_to_csv("data.csv", temp_data, size) == 0) {
+    if (save_to_csv("data.csv", temp_data, size) == 0) 
+    {
         printf("Данные сохранены в data.csv\n");
     } else {
         printf("Ошибка сохранения!\n");
